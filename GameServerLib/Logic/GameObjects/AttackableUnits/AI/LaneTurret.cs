@@ -74,7 +74,7 @@ namespace LeagueSandbox.GameServer.Logic.GameObjects
 
                     HealthPoints = new Health(1300);
                     AttackRange = new Stat(905, 0);
-                    AttackSpeed = new Stat(0.625f, 0.2f, 2.5f);
+                    AttackSpeed = new AttackSpeed(0);
                     Armor = new Stat(60);
                     MagicResist = new Stat(100);
                     AttackDamage = new Stat(170);
@@ -90,7 +90,7 @@ namespace LeagueSandbox.GameServer.Logic.GameObjects
                     HealthPoints = new Health(1300);
                     AttackDamage = new Stat(100);
                     AttackRange = new Stat(905, 0);
-                    AttackSpeed = new Stat(0.83f, 0.2f, 2.5f);
+                    AttackSpeed = new AttackSpeed(-0.205f);
                     Armor = new Stat(60);
                     MagicResist = new Stat(100);
                     AttackDamage = new Stat(152);
@@ -106,7 +106,7 @@ namespace LeagueSandbox.GameServer.Logic.GameObjects
                     HealthRegeneration = new Stat(5, 0);
                     ArmorPenetration.PercentBonus = 0.825f;
                     AttackRange = new Stat(905, 0);
-                    AttackSpeed = new Stat(0.83f, 0.2f, 2.5f);
+                    AttackSpeed = new AttackSpeed(-0.205f);
                     Armor = new Stat(67);
                     MagicResist = new Stat(100);
                     AttackDamage = new Stat(190);
@@ -123,7 +123,7 @@ namespace LeagueSandbox.GameServer.Logic.GameObjects
                     HealthRegeneration = new Stat(5, 0);
                     ArmorPenetration.PercentBonus = 0.825f;
                     AttackRange = new Stat(905, 0);
-                    AttackSpeed = new Stat(0.83f, 0.2f, 2.5f);
+                    AttackSpeed = new AttackSpeed(-0.205f);
                     Armor = new Stat(65);
                     MagicResist = new Stat(100);
                     AttackDamage = new Stat(180);
@@ -133,7 +133,7 @@ namespace LeagueSandbox.GameServer.Logic.GameObjects
                     AutoAttackProjectileSpeed = 1200.0f;
                     break;
                 case TurretType.FountainTurret:
-                    AttackSpeed = new Stat(1.6f, 0.2f, 2.5f);
+                    AttackSpeed = new AttackSpeed(-0.610f);
                     HealthPoints = new Health(9999);
                     AttackDamage = new Stat(999, 0);
                     AttackRange = new Stat(1250, 0);
@@ -148,7 +148,7 @@ namespace LeagueSandbox.GameServer.Logic.GameObjects
                     HealthPoints = new Health(2000);
                     AttackDamage = new Stat(100, 0);
                     AttackRange = new Stat(905, 0);
-                    AttackSpeed = new Stat(0.83f, 0.2f, 2.5f);
+                    AttackSpeed = new AttackSpeed(-0.205f);
                     Armor.PercentBonus = 0.5f;
                     MagicResist.PercentBonus = 0.5f;
 

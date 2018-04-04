@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace LeagueSandbox.GameServer.Logic.GameObjects.Stats
 {
-    public class Health : Stat
+    public sealed class Health : Stat
     {
         public float Current { get; set; }
 

@@ -7,7 +7,7 @@ namespace LeagueSandbox.GameServer.Logic.GameObjects.Stats
         /// <summary>
         /// Base value of the stat.
         /// </summary>
-        public float BaseValue { get; private set; }
+        public float BaseValue { get; protected set; }
 
         public float MinLimit { get; set; }
         public float MaxLimit { get; set; }
@@ -24,7 +24,7 @@ namespace LeagueSandbox.GameServer.Logic.GameObjects.Stats
 
         }
 
-        public float Total
+        public virtual float Total
         {
             get
             {

@@ -462,7 +462,7 @@ namespace LeagueSandbox.GameServer.Logic.Maps
                     m.HealthPoints = new Health(475 + 20 * (int)(_game.GameTime / (180 * 1000)));
                     m.AttackDamage = new Stat(12 + 1 * (int)(_game.GameTime / (180 * 1000)), 0);
                     m.AttackRange = new Stat(180, 0);
-                    m.AttackSpeed = new Stat(1.25f, 0.2f, 2.5f);
+                    m.AttackSpeed = new AttackSpeed(-0.5f);
                     m.AutoAttackDelay = 11.8f / 30;
                     m.IsMelee = true;
                     break;
@@ -470,7 +470,7 @@ namespace LeagueSandbox.GameServer.Logic.Maps
                     m.HealthPoints = new Health(279 + 7.5f * (int)(_game.GameTime / (90 * 1000)));
                     m.AttackDamage = new Stat(23 + 1 * (int)(_game.GameTime / (90 * 1000)), 0);
                     m.AttackRange = new Stat(600, 0);
-                    m.AttackSpeed = new Stat(0.67f, 0.2f, 2.5f);
+                    m.AttackSpeed = new AttackSpeed(-0.67f);
                     m.AutoAttackDelay = 14.1f / 30;
                     m.AutoAttackProjectileSpeed = 650;
                     break;
@@ -478,7 +478,7 @@ namespace LeagueSandbox.GameServer.Logic.Maps
                     m.HealthPoints = new Health(700 + 27 * (int)(_game.GameTime / (180 * 1000)));
                     m.AttackDamage = new Stat(40 + 3 * (int)(_game.GameTime / (180 * 1000)), 0);
                     m.AttackRange = new Stat(450, 0);
-                    m.AttackSpeed = new Stat(1, 0.2f, 2.5f);
+                    m.AttackSpeed = new AttackSpeed(-0.375f);
                     m.AutoAttackDelay = 9 / 30f;
                     m.AutoAttackProjectileSpeed = 1200;
                     break;
@@ -486,7 +486,7 @@ namespace LeagueSandbox.GameServer.Logic.Maps
                     m.HealthPoints = new Health(1500 + 200 * (int)(_game.GameTime / (180 * 1000)));
                     m.AttackDamage = new Stat(190 + 10 * (int)(_game.GameTime / (180 * 1000)), 0);
                     m.AttackRange = new Stat(170, 0);
-                    m.AttackSpeed = new Stat(0.694f, 0.2f, 2.5f);
+                    m.AttackSpeed = new AttackSpeed(-0.1f);
                     m.Armor = new Stat(30);
                     m.MagicResist = new Stat(-30);
                     m.IsMelee = true;

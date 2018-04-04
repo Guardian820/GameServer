@@ -231,6 +231,7 @@
     <Compile Include="Logic\GameObjects\AttackableUnits\Buildings\AnimatedBuildings\ObjAnimatedBuilding.cs" />
     <Compile Include="Logic\GameObjects\AttackableUnits\Buildings\ObjBuilding.cs" />
     <Compile Include="Logic\GameObjects\Missiles\ObjMissile.cs" />
+    <Compile Include="Logic\GameObjects\Stats\AttackSpeed.cs" />
     <Compile Include="Logic\GameObjects\Stats\ChampionStatMod.cs" />
     <Compile Include="Logic\GameObjects\Stats\Health.cs" />
     <Compile Include="Logic\GameObjects\Stats\HeroStats.cs" />

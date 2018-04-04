@@ -13,28 +13,30 @@ namespace LeagueSandbox.GameServer.Logic.GameObjects.Stats
         public uint SpellEnabledBitFieldUpper1 { get; set; } // mReplicatedSpellCanCastBitsUpper1 (1-4)
         public uint SpellEnabledBitFieldLower2 { get; set; } = 0x7C00; // mReplicatedSpellCanCastBitsLower2 (1-5)
         public uint SpellEnabledBitFieldUpper2 { get; set; } // mReplicatedSpellCanCastBitsUpper2 (1-6)
-        public float EvolvePoints { get; set; } // mEvolvePoints (1-7)
+        public uint EvolvePoints { get; set; } // mEvolvePoints (1-7)
         public uint EvolveFlags { get; set; } // mEvolveFlag (1-8)
-        public float ManaCost0 { get; set; } // ManaCost_0 (1-9)
-        public float ManaCost1 { get; set; } // ManaCost_1 (1-10)
-        public float ManaCost2 { get; set; } // ManaCost_2 (1-11)
-        public float ManaCost3 { get; set; } // ManaCost_3 (1-12)
-        public float ManaCostEx0 { get; set; } // ManaCostEx_0 (1-13)
-        public float ManaCostEx1 { get; set; } // ManaCostEx_1 (1-14)
-        public float ManaCostEx2 { get; set; } // ManaCostEx_2 (1-15)
-        public float ManaCostEx3 { get; set; } // ManaCostEx_3 (1-16)
-        public float ManaCostEx4 { get; set; } // ManaCostEx_4 (1-17)
-        public float ManaCostEx5 { get; set; } // ManaCostEx_5 (1-18)
-        public float ManaCostEx6 { get; set; } // ManaCostEx_6 (1-19)
-        public float ManaCostEx7 { get; set; } // ManaCostEx_7 (1-20)
-        public float ManaCostEx8 { get; set; } // ManaCostEx_8 (1-21)
-        public float ManaCostEx9 { get; set; } // ManaCostEx_9 (1-22)
-        public float ManaCostEx10 { get; set; } // ManaCostEx_10 (1-23)
-        public float ManaCostEx11 { get; set; } // ManaCostEx_11 (1-24)
-        public float ManaCostEx12 { get; set; } // ManaCostEx_12 (1-25)
-        public float ManaCostEx13 { get; set; } // ManaCostEx_13 (1-26)
-        public float ManaCostEx14 { get; set; } // ManaCostEx_14 (1-27)
-        public float ManaCostEx15 { get; set; } // ManaCostEx_15 (1-28)
+        public float[] ManaCost { get; set; } = new float[4];
+        // ManaCost_0 (1-9)
+        // ManaCost_1 (1-10)
+        // ManaCost_2 (1-11)
+        // ManaCost_3 (1-12)
+        public float[] ManaCostEx { get; set; } = new float[16];
+        // ManaCostEx_0 (1-13)
+        // ManaCostEx_1 (1-14)
+        // ManaCostEx_2 (1-15)
+        // ManaCostEx_3 (1-16)
+        // ManaCostEx_4 (1-17)
+        // ManaCostEx_5 (1-18)
+        // ManaCostEx_6 (1-19)
+        // ManaCostEx_7 (1-20)
+        // ManaCostEx_8 (1-21)
+        // ManaCostEx_9 (1-22)
+        // ManaCostEx_10 (1-23)
+        // ManaCostEx_11 (1-24)
+        // ManaCostEx_12 (1-25)
+        // ManaCostEx_13 (1-26)
+        // ManaCostEx_14 (1-27)
+        // ManaCostEx_15 (1-28)
         public ActionState ActionState { get; set; } // ActionState (2-1)
         public bool IsMagicImmune => _owner.IsMagicImmune; // MagicImmune (2-2)
         public bool IsInvulnerable => _owner.IsInvulnerable; // IsInvulnerable (2-3)
@@ -49,7 +51,7 @@ namespace LeagueSandbox.GameServer.Logic.GameObjects.Stats
         public float HealthRegenPer5 => _owner.HealthRegeneration.Total; // mHPRegenDate (2-12)
         public float ManaRegenPer5 => _owner.ManaRegeneration.Total; // mPARRegenRate (2-13)
         public float TotalAttackRange => _owner.AttackRange.Total; // mAttackRange (2-14)
-        public uint FlatAttackDamageMod => (uint)_owner.AttackDamage.FlatBonus; // mFlatPhysicalDamageMod (2-15)
+        public float FlatAttackDamageMod => _owner.AttackDamage.FlatBonus; // mFlatPhysicalDamageMod (2-15)
         public float PercentAttackDamageMod => _owner.AttackDamage.PercentBonus; // mPercentPhysicalDamageMod (2-16)
         public float FlatMagicalDamageMod => _owner.AbilityPower.FlatBonus; // mFlatMagicDamageMod (2-17)
         public float FlatMagicalReduction => _owner.MagicResist.FlatBonus; // mFlatMagicReduction (2-18)
@@ -103,12 +105,12 @@ namespace LeagueSandbox.GameServer.Logic.GameObjects.Stats
         {
             if (slot < 4)
             {
-                return (float)typeof(HeroStats).GetProperty($"ManaCost{slot}").GetMethod.Invoke(this, null);
+                return ManaCost[slot];
             }
 
             if (slot > 44 && slot < 61)
             {
-                return (float)typeof(HeroStats).GetProperty($"ManaCostEx{slot - 45}").GetMethod.Invoke(this, null);
+                return ManaCostEx[slot - 45];
             }
 
             return 0;
@@ -118,12 +120,12 @@ namespace LeagueSandbox.GameServer.Logic.GameObjects.Stats
         {
             if (slot < 4)
             {
-                typeof(HeroStats).GetProperty($"ManaCost{slot}").SetMethod.Invoke(this, new object[] {val});
+                ManaCost[slot] = val;
             }
 
             if (slot > 44 && slot < 61)
             {
-                typeof(HeroStats).GetProperty($"ManaCostEx{slot - 45}").SetMethod.Invoke(this, new object[] {val});
+                ManaCostEx[slot - 45] = val;
             }
         }
 
@@ -183,10 +185,7 @@ namespace LeagueSandbox.GameServer.Logic.GameObjects.Stats
             _owner = owner;
             ActionState = ActionState.CanAttack | ActionState.CanCast | ActionState.CanMove;
             _owner.MovementSpeed = new Stat(charData.MoveSpeed, 0);
-            _owner.AttackSpeed = new Stat(0.625f / (1 + charData.AttackDelayOffsetPercent), 0.2f, 2.5f) // lowest limit is 0.2, source: youtu.be/ULV67S5i2zw
-            {
-                PercentBaseBonus = 1f
-            };
+            _owner.AttackSpeed = new AttackSpeed(charData.AttackDelayOffsetPercent);
             _owner.AttackRange = new Stat(charData.AttackRange, 0);
             _owner.AttackDamage = new Stat(charData.BaseDamage);
             _owner.Armor = new Stat(charData.Armor);

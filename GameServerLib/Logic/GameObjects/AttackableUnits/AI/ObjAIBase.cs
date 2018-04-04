@@ -22,7 +22,7 @@ namespace LeagueSandbox.GameServer.Logic.GameObjects
         protected bool _nextAttackFlag;
 
         public Stat MovementSpeed { get; set; } = new Stat(0, 0);
-        public Stat AttackSpeed { get; set; } = new Stat(0.625f, 0.2f, 2.5f);
+        public AttackSpeed AttackSpeed { get; set; }
         public Stat AttackRange { get; set; } = new Stat(0, 0);
         public Stat CriticalChance { get; set; } = new Stat(0, 0, 1);
         public Stat CriticalDamage { get; set; } = new Stat(2);

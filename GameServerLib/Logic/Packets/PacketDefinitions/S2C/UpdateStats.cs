@@ -76,9 +76,12 @@ namespace LeagueSandbox.GameServer.Logic.Packets.PacketDefinitions.S2C
                 }
 
                 var data = stream.ToArray();
-                buffer.Write(fieldMask);
-                buffer.Write((byte)data.Length);
-                buffer.Write(data);
+                if (data.Length > 0)
+                {
+                    buffer.Write(fieldMask);
+                    buffer.Write((byte)data.Length);
+                    buffer.Write(data);
+                }
             }
 
             if (partial)
